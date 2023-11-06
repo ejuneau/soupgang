@@ -93,7 +93,7 @@ export default function Slideshow(props) {
                 }
                 
             </div>
-            {props.truncated && <Link to="/menus" className="button">Show Me more</Link>}
+            {props.truncated && <Link to="/soupgang/menus/" className="button">Show Me more</Link>}
         </div>
     )
 }

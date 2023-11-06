@@ -26,14 +26,14 @@ function Page() {
 function App() {
   return (
     <Routes>
-      <Route   path="/"       element={<Page />}>
+      <Route   path="/soupgang/"       element={<Page />}>
 
-        <Route path="/"       element={<Home />}/>
-        <Route path="menus"   element={<Menus />}/>
-        <Route path="about"   element={<About />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="login"   element={<Login />} /> 
-        <Route path="*"       element={<NotFound />} />
+        <Route path="/soupgang/"       element={<Home />}/>
+        <Route path="/soupgang/menus/"   element={<Menus />}/>
+        <Route path="/soupgang/about/"   element={<About />} />
+        <Route path="/soupgang/contact/" element={<Contact />} />
+        <Route path="/soupgang/login/"   element={<Login />} /> 
+        <Route path="/soupgang/*"       element={<NotFound />} />
 
       </Route>
     </Routes>

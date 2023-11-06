@@ -14,12 +14,12 @@ export default function Header() {
     } 
     return(
         <header id="navbar">
-                <NavLink to="/" id="logo" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}><img src={Logo} alt="OpenKitchen Logo" />OpenKitchen</NavLink>  
+                <NavLink to="/soupgang/" id="logo" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}><img src={Logo} alt="OpenKitchen Logo" />OpenKitchen</NavLink>  
             <nav>
-                <NavLink to="/about"    className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>About</NavLink>  
-                <NavLink to="/menus"    className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>Menus</NavLink>  
-                <NavLink to="/contact"  className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>Contact</NavLink>
-                <NavLink to="/login"    className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>Login</NavLink>               
+                <NavLink to="/soupgang/about/"    className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>About</NavLink>  
+                <NavLink to="/soupgang/menus/"    className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>Menus</NavLink>  
+                <NavLink to="/soupgang/contact/"  className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>Contact</NavLink>
+                <NavLink to="/soupgang/login/"    className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>Login</NavLink>               
             </nav>
         </header>
     )
