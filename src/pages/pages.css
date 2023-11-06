@@ -1,0 +1,127 @@
+.page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.splash {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(400px + 5vh);
+    overflow: hidden;
+}
+.splash {
+    background-color: var(--blue);
+    padding-top: 5rem;
+}
+.splash h1 {
+    font-size: 5em;
+}
+.image-text {
+    text-align: center;
+    position: relative;
+    color: var(--white);
+    text-shadow: 0px 0px 15px var(--black);
+}
+.splash p {
+    max-width: 80%;
+}
+.splash img {
+    position: absolute;
+    width: 100%;
+    bottom: -30vmax;
+    opacity: 0.6;
+    
+}
+.splash > * {
+    color: var(--white);
+}
+
+.subtitle {
+    font-size: 2em;
+}
+.about-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--white);
+    color: var(--black);
+    justify-content: center;
+    padding: 3em;
+}
+
+.about-info p {
+    width: 40%;
+}
+
+.text-CTA {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+.how-it-works {
+    display: flex;
+    flex-direction: column;
+    padding: 3em;
+    justify-content: center;
+    align-items: center;
+}
+.how-it-works {
+    background-color: var(--red);
+    color: var(--black);
+}
+.how-it-works b {
+    background-color: var(--red);
+    color: var(--gold);
+
+}
+.steps {
+    max-width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+.how-it-works .inline-link {    
+    font-size: inherit;
+    color: var(--gold);
+}
+.pricing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    color: var(--black);
+    padding: 3rem;
+}
+.pricing > * {
+    max-width: 40%;
+}
+.pricing table{
+    background-color: var(--blue);
+    color: var(--white);
+    max-width: unset;
+    
+}
+.pricing table td {
+    padding: 1rem;
+    outline: 10px var(--white);
+}
+.pricing table th {
+    border-right: 10px var(--white);
+}
+.pricing table tr {
+    outline: 1px solid var(--white);
+}
+.pricing .sign-up-CTA-container {
+    display: flex;
+    width: 100%;
+    padding: 3rem;
+    justify-content: space-evenly;
+}
+.pricing .inline {
+    color: var(--gold);
+}

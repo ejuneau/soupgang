@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
+:root {
+  --white: #E5E5E5;
+  --red:   #CF5C36;
+  --blue:  #242F40;
+  --black: #363636;
+  --gold:  #CCA43B;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root > div {
   display: flex;
   flex-direction: column;
+  width: 100%;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+@font-face {
+  font-family: 'Lexend';
+  src: url(./assets/Lexend.ttf);
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url(./assets/PlayfairDisplay.ttf);
+}
+@font-face {
+  font-family: 'Playfair Display';
+  src: url(./assets/PlaylfairDisplay-Italic.ttf);
+  font-style: italic;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+* {
+  outline: 0px solid red;
+  font-family: 'Lexend';
+  transition: all 0.2s ease-in-out;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display';
+}
+p, a {
+  font-size: calc(1em + 0.1vw);
+}
+.custom-underline {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.custom-underline,
+.custom-underline:hover,
+.custom-underline:focus,
+.custom-underline:active {
+  text-decoration: none;
+}
+.custom-underline::after {
+  content: "";
+  position: absolute;
+}
+.custom-underline::after {
+  bottom: 0%;
+  height: 2px;
+  width: 0%;
+  left: 0%;
+  transition: all 0.3s ease;
+}
+
+.custom-underline:hover::after {
+  width: 100%;
+    transition: all 0.3s ease;
 }
