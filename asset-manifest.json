@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/soupgang/static/css/main.172a21de.css",
+    "main.js": "/soupgang/static/js/main.936fe8a4.js",
+    "static/js/787.a599b3c8.chunk.js": "/soupgang/static/js/787.a599b3c8.chunk.js",
+    "static/media/lamb shepherd's pie.png": "/soupgang/static/media/lamb shepherd's pie.b93d9bb23b0d93d30d9c.png",
+    "static/media/vegan ceasar salad.png": "/soupgang/static/media/vegan ceasar salad.edd64475b649f22ee194.png",
+    "static/media/chicken pot pie.png": "/soupgang/static/media/chicken pot pie.a85f5d3a586fb22e7c33.png",
+    "static/media/beef and bacon stew.png": "/soupgang/static/media/beef and bacon stew.55683ab5034ff0a1a077.png",
+    "static/media/shrimp salad.png": "/soupgang/static/media/shrimp salad.def1fa3a6e6ecfcc2ad6.png",
+    "static/media/polish donuts.png": "/soupgang/static/media/polish donuts.2b75210c90253f07a1f5.png",
+    "static/media/beef bone curry.png": "/soupgang/static/media/beef bone curry.484d91d0effce6db37f3.png",
+    "static/media/shrimp fried rice.png": "/soupgang/static/media/shrimp fried rice.bc3de65036fe6b9750a7.png",
+    "static/media/chicken pad thai.png": "/soupgang/static/media/chicken pad thai.a2c11b13bb207b718974.png",
+    "static/media/borscht.png": "/soupgang/static/media/borscht.7b3ab1e041b280c25541.png",
+    "static/media/french fries.png": "/soupgang/static/media/french fries.bc801040517fe1c18533.png",
+    "static/media/beef wellington.png": "/soupgang/static/media/beef wellington.60a40cb7d2c5d1bdd36e.png",
+    "static/media/chicken noodle soup.png": "/soupgang/static/media/chicken noodle soup.ceabd0aa4dbb3f2f7533.png",
+    "static/media/PlayfairDisplay.ttf": "/soupgang/static/media/PlayfairDisplay.20240034b80f50c3ad00.ttf",
+    "static/media/PlaylfairDisplay-Italic.ttf": "/soupgang/static/media/PlaylfairDisplay-Italic.2f795353f413479428d6.ttf",
+    "static/media/Lexend.ttf": "/soupgang/static/media/Lexend.8c2b86fea1234bcd4234.ttf",
+    "static/media/404image.png": "/soupgang/static/media/404image.fb70023b815acfab8ed8.png",
+    "index.html": "/soupgang/index.html",
+    "main.172a21de.css.map": "/soupgang/static/css/main.172a21de.css.map",
+    "main.936fe8a4.js.map": "/soupgang/static/js/main.936fe8a4.js.map",
+    "787.a599b3c8.chunk.js.map": "/soupgang/static/js/787.a599b3c8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.172a21de.css",
+    "static/js/main.936fe8a4.js"
+  ]
+}
