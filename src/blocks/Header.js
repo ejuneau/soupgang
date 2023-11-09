@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom"
 import Logo from '../assets/logo.png';
+import AuthContext from "../backend/AuthContext";
+
 
 export default function Header() {
+    const {user} = useContext(AuthContext);
     var prevScrollpos = window.scrollY;
     window.onscroll = function() {
         var currentScrollPos = window.scrollY;
@@ -14,12 +18,12 @@ export default function Header() {
     } 
     return(
         <header id="navbar">
-                <NavLink to="/soupgang/" id="logo" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}><img src={Logo} alt="OpenKitchen Logo" />OpenKitchen</NavLink>  
+            <NavLink to="/" id="logo" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}><img src={Logo} alt="OpenKitchen Logo" />OpenKitchen</NavLink>  
             <nav>
-                <NavLink to="/soupgang/about/"    className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>About</NavLink>  
-                <NavLink to="/soupgang/menus/"    className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>Menus</NavLink>  
-                <NavLink to="/soupgang/contact/"  className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>Contact</NavLink>
-                <NavLink to="/soupgang/login/"    className={({ isActive, isPending }) => isPending ? "custom-underline pending" : isActive ? "custom-underline active" : "custom-underline"}>Login</NavLink>               
+                <NavLink to="/about/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"}>About</NavLink>  
+                <NavLink to="/menus/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"}>Menus</NavLink>  
+                <NavLink to="/contact/"  className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"}>Contact</NavLink>
+                {user?<NavLink to="/profile/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"}>Profile</NavLink>:<NavLink to="/login/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"}>Login</NavLink>}               
             </nav>
         </header>
     )

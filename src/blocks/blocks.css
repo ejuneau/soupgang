@@ -24,9 +24,7 @@ header nav {
     display: flex;
     justify-content: space-between;
   }
-  .custom-underline::after {
-    background-color: var(--white)
-  }
+
 header a img, footer a img {
     height: 100%;
 }
@@ -106,5 +104,20 @@ header a, footer a {
     scale: 1.1;
     filter: blur(2px);
     opacity: 0.5
+}
+.sign-in-block form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.sign-up-block form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 

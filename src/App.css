@@ -27,7 +27,7 @@
 }
 
 * {
-  outline: 0px solid red;
+  outline: 1px solid red;
   font-family: 'Lexend';
   transition: all 0.2s ease-in-out;
 }
@@ -63,4 +63,10 @@ p, a {
 .custom-underline:hover::after {
   width: 100%;
     transition: all 0.3s ease;
+}
+.custom-underline.white::after {
+  background-color: var(--white)
+}
+.custom-underline.blue::after {
+  background-color: var(--blue)
 }

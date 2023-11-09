@@ -84,8 +84,8 @@ export default function About() {
 			</table>
 			<p>Sounds good with you? Let's get started.</p>
 		<div className="sign-up-CTA-container">
-			<Link to="/soupgang/login" className="button">Sign up (cook)</Link>
-			<Link to="/soupgang/login" className="button">Sign up (diner)</Link>
+			<Link to="/login" className="button">Sign up (cook)</Link>
+			<Link to="/login" className="button">Sign up (diner)</Link>
 		</div>
 		<p>Still have questions? Feel free to reach out on our <b><Link to="/contact" className="inline">contact</Link></b> page. Our dedicated support team will be more than happy to answer any questions you may have.</p>
 		</div>

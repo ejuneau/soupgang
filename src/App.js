@@ -1,4 +1,5 @@
 import { Outlet, Routes, Route } from 'react-router';
+import { AuthProvider } from './backend/AuthProvider';
 import './App.css';
 import './blocks/blocks.css';
 import './pages/pages.css';
@@ -11,7 +12,9 @@ import About from './pages/About';
 import Menus from './pages/Menus';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
-import Login from './pages/Login';
+import Login from './pages/account/Login';
+import Profile from './pages/account/Profile';
+import Privacy from './pages/privacy';
 
 function Page() {
   return(
@@ -24,19 +27,24 @@ function Page() {
 }
 
 function App() {
+
   return (
-    <Routes>
-      <Route   path="/soupgang/"       element={<Page />}>
+    <AuthProvider>
+      <Routes>
+        <Route   path="/"       element={<Page />}>
 
-        <Route path="/soupgang/"       element={<Home />}/>
-        <Route path="/soupgang/menus/"   element={<Menus />}/>
-        <Route path="/soupgang/about/"   element={<About />} />
-        <Route path="/soupgang/contact/" element={<Contact />} />
-        <Route path="/soupgang/login/"   element={<Login />} /> 
-        <Route path="/soupgang/*"       element={<NotFound />} />
+          <Route path="/"         element={<Home />}/>
+          <Route path="/menus/"   element={<Menus />}/>
+          <Route path="/about/"   element={<About />} />
+          <Route path="/contact/" element={<Contact />} />
+          <Route path="/login/"   element={<Login />} /> 
+          <Route path="/profile/" element={<Profile />} />
+          <Route path="/privacy/" element={<Privacy />} />
+          <Route path="/*"        element={<NotFound />} />
 
-      </Route>
-    </Routes>
+        </Route>
+      </Routes>
+    </AuthProvider>
   );
 }
 

@@ -21,7 +21,7 @@ export default function Home() {
           <h1>What are we?</h1>
           <div className="text-CTA">
             <p>Open Kitchen is a meal provider service, done differently. With a focus on community and a passion for authentic recipes, your meals won't come from a faceless big brand, but neighbours, families, and - if we do our job right - new friends.</p>
-            <Link to="/soupgang/about" className="button">Learn more</Link>
+            <Link to="/about" className="button">Learn more</Link>
           </div>
         </div>
         <div className="how-it-works">
@@ -32,7 +32,7 @@ export default function Home() {
             <p><b>Over the rest of the month: </b>Receive the dishes you and your cohort voted on.</p>
             <p><b>After every meal: rate it #outta9</b></p>
           </div>
-          <Link to="/soupgang/account" className="button">Sign me up</Link>
+          <Link to="/login" className="button">Sign me up</Link>
         </div>
         
         <Slideshow truncated={true}/>
