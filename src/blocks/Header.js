@@ -1,11 +1,9 @@
-import { useContext } from "react";
 import { NavLink } from "react-router-dom"
 import Logo from '../assets/logo.png';
-import AuthContext from "../backend/AuthContext";
 
 
 export default function Header() {
-    const {user} = useContext(AuthContext);
+    const {user} = false;
     var prevScrollpos = window.scrollY;
     window.onscroll = function() {
         var currentScrollPos = window.scrollY;

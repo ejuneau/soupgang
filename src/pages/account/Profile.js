@@ -1,12 +1,9 @@
-import { useContext } from "react";
-import AuthContext from "../../backend/AuthContext";
 import { useNavigate, Navigate } from "react-router";
-import { signOutHandle } from "../../backend/firebase";
 function Profile() {
-    const { user } = useContext(AuthContext);
+    const { user } = false;
     const navigate = useNavigate();
     const handleLogout = async () => {
-        await  signOutHandle();
+        //await  signOutHandle();
     };
     if (!user) {
         return <Navigate replace to="/login" />

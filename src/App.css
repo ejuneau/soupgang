@@ -27,7 +27,7 @@
 }
 
 * {
-  outline: 1px solid red;
+  outline: 0px solid red;
   font-family: 'Lexend';
   transition: all 0.2s ease-in-out;
 }

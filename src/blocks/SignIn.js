@@ -1,44 +1,79 @@
 import { useState } from "react";
-import { signInHandle } from "../backend/firebase";
+import axios from "axios";
+// import 'antd/dist/antd.css';
+import { Form, Input, Button, Checkbox } from 'antd';
+import { Link } from "react-router-dom";
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
-const SignIn = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+const SignIn = (props) => {
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setEmail("");
-        setPassword("");
-        const res = await signInHandle(email, password);
-        if (res.error) {
-            setError(res.error)
-        }
-    };
+    const onFinish = values => {
+        const {username, password} = values;
+        //encrypt user data?
+        axios.post('http://localhost:3000/validatePassword', {username,password})
+        .then(res => {
+            if (res.data.validation) {
+                alert('Your password is correct, thank you!');
+                //log in and redirect
+            } else {
+                alert('Your password is not correct. Please try again.');
+            }
+        })
+    }
 
     return (
-        <div className="sign-in-block">
-            {error ? <div>{error}</div> : null}
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="email"
-                    value={email}
-                    placeholder="Your Email"
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    type="password"
-                    name="password"
-                    value={password}
-                    placeholder="Your Password"
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <div className="button-container">
-                    <input type="submit" value="submit" className="button" />
-                </div>
-            </form>
-        </div>
-    )
-}
+        <Form
+          name="normal_login"
+          className="login-form"
+          initialValues={{
+            remember: true,
+          }}
+          onFinish={onFinish}
+        >
+          <Form.Item
+            name="username"
+            rules={[
+              {
+                required: true,
+                message: 'Please input your Username!',
+              },
+            ]}
+          >
+            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: 'Please input your Password!',
+              },
+            ]}
+          >
+            <Input
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              type="password"
+              placeholder="Password"
+            />
+          </Form.Item>
+          <Form.Item>
+            <Form.Item name="remember" valuePropName="checked" noStyle>
+              <Checkbox>Remember me</Checkbox>
+            </Form.Item>
+    
+            <a className="login-form-forgot" href="/">
+              Forgot password
+            </a>
+          </Form.Item>
+    
+          <Form.Item>
+            <Button type="primary" htmlType="submit" className="login-form-button" style={{marginRight: "0.5em"}}>
+              Log in
+            </Button>
+            Or <Link to="/login" onClick={()=> props.toggleInUp()}>register now!</Link>
+          </Form.Item>
+        </Form>
+      );
+    };
+
 export default SignIn;

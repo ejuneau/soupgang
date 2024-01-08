@@ -1,5 +1,6 @@
 import { Outlet, Routes, Route } from 'react-router';
-import { AuthProvider } from './backend/AuthProvider';
+import { ConfigProvider } from "antd";
+
 import './App.css';
 import './blocks/blocks.css';
 import './pages/pages.css';
@@ -29,7 +30,13 @@ function Page() {
 function App() {
 
   return (
-    <AuthProvider>
+    <ConfigProvider theme={{
+      token: {
+        colorPrimary: '#364761',
+        colorLink: '#CCA43B',
+        colorBgBase: '#E5E5E5'
+      }
+    }}>
       <Routes>
         <Route   path="/"       element={<Page />}>
 
@@ -44,7 +51,7 @@ function App() {
 
         </Route>
       </Routes>
-    </AuthProvider>
+    </ConfigProvider> 
   );
 }
 

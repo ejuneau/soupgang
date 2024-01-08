@@ -151,6 +151,7 @@ button {
 .toggle-container {
     display: flex;
     justify-content: center;
+    background-color: var(--white);
 }
 .toggle-container p {
     padding: 0 1rem;
@@ -167,6 +168,7 @@ button {
 .form-container {
     display: flex;
     justify-content: center;
+    background-color: var(--white);
 }
 input[type=text], input[type=password], input[type=email] {
     outline: 0.1rem solid var(--blue);
