@@ -1,9 +1,11 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import UserContext from "../UserContext";
 import Logo from '../assets/logo.png';
 
 
 export default function Header() {
-    const {user} = false;
+    const {user} = useContext(UserContext);
     var prevScrollpos = window.scrollY;
     window.onscroll = function() {
         var currentScrollPos = window.scrollY;

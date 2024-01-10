@@ -34,7 +34,7 @@ header a, footer a {
     align-items: center;
     margin: 0 2.5vw;
 }
-.button {
+.button, .form-button-container>* {
     text-decoration: none;
     text-transform: uppercase;
     background-color: #364761;
@@ -46,7 +46,10 @@ header a, footer a {
     justify-content: center;
     border-radius: 5px;
 }
-.button:hover {
+.form-button-container {
+    display: inline-block;
+}
+.button:hover, .form-button-container:hover>* {
     box-shadow: 5px 5px #AA4928;
 }
 .slideshow-container {

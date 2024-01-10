@@ -1,18 +1,24 @@
-import { useEffect, useState } from "react"
-import { useNavigate, Navigate } from "react-router";
+import { useNavigate } from "react-router";
+import React, {useContext, useState, useEffect} from 'react';
+import UserContext from "../../UserContext";
 
 import SignIn from "../../blocks/SignIn";
 import SignUp from "../../blocks/SignUp";
 
 export default function Login() {
-    const { user } = false;
+    const { user } = useContext(UserContext);
     const navigate = useNavigate();
     const [inUp, setInUp] = useState("in");
     useEffect(() => {
         document.title = inUp==="in"?"Login | OpenKitchen 🧑‍🍳":inUp==="up"?"Sign Up | OpenKitchen 🧑‍🍳": null;
         window.scrollTo(0, 0);
       }, [inUp]);
-      if (!user) {
+    useEffect(() => {
+        if(user) {
+            console.log(user);
+            navigate('/profile')
+          }
+    }, [])
               
     function toggleInUp() {
         inUp === "in"? setInUp("up"):setInUp("in");
@@ -35,8 +41,6 @@ export default function Login() {
             </div>
         </div>
     )
-      }
-      else {
-        return <Navigate replace to="/profile" />
-      }
+      
+
 }

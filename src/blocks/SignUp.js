@@ -1,18 +1,26 @@
 import { Form, Input, Button } from 'antd';
+import { useState, useContext } from "react";
+import UserContext from "../UserContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 const SignUp = (props) => {
-
+  const { user, login, logout } = useContext(UserContext);
     const onFinish = values => {
         const {username, password, email} = values;
-        //encrypt user data?
-        axios.put('http://localhost:3000/createUser', {username,password,email})
+        //encrypt user data
+        const encryptedPassword = password;
+        //Create new user
+        axios.post('http://localhost:3000/createUser', {username,encryptedPassword,email})
         .then(res => {
             console.log(res.data)
             if (res.status === 200) {
                 alert('Account created, welcome to the soup gang!');
                 //Log in and redirect
+                login({
+                  id: res.data.user.uuid,
+                  username: res.data.user.username
+                });
                 //add check for confirmed password
                 //add check for duplicate email/username
             } 
@@ -66,7 +74,7 @@ const SignUp = (props) => {
             />
           </Form.Item>
           <Form.Item
-            name="password2"
+            name="password-2"
             rules={[
               {
                 required: true,
@@ -82,9 +90,9 @@ const SignUp = (props) => {
           </Form.Item>
     
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="login-form-button" style={{marginRight: "0.5em"}}>
+          <button type="primary" htmlType="submit" className="button" style={{marginRight: "1.5em", display:'inline-block'}} >
               Sign Up
-            </Button>
+            </button>
             Or <Link to="/login" onClick={()=> props.toggleInUp()}>log in</Link>
           </Form.Item>
         </Form>

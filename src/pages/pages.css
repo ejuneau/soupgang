@@ -179,4 +179,5 @@ input[type=text], input[type=password], input[type=email] {
 .profile-container {
     display: flex;
     flex-direction: column;
+    background-color: var(--white);
 }

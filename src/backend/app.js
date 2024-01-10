@@ -5,11 +5,6 @@ const logger = require("morgan");
 const sqlite3 = require('sqlite3').verbose();
 const { v4: uuidv4 } = require("uuid");
 
-const indexRouter = require("./routes/index");
-
-const usersModule = require("./routes/users");
-const usersRouter = usersModule.router;
-
 const cors = require("cors");
 
 const app = express();
@@ -26,38 +21,38 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-
 let db = new sqlite3.Database('./bin/credentials.db', (err) => {
   if (err) {
     console.error(err.message);
-  }
+  } else {
   console.log('Connected to credentials database.')
+  }
 });
 
 app.post('/validatePassword', (req, res) => {
   const { username, password } = req.body;
-
   db.all(`SELECT * FROM credentials WHERE username = '${username}' AND password = '${password}'`, (err, rows) => {
     if (err) {
       console.log(err);
     }
     if ( rows.length > 0 ) {
-      res.send({validation: true});
+      res.send({validation: true, user: rows[0]});
+      console.log(`User ${username} has logged in with password ${password}`)
+      console.log(rows[0]);
     } else {
       res.send({validation: false});
     }
   })
 })
 
-app.put('/createUser', (req, res) => {
+app.post('/createUser', (req, res) => {
   const { username, password, email } = req.body;
-
-  db.all(`INSERT INTO credentials(username, password, email) VALUES('${username}', '${password}', '${email}');`, (err, rows) => {
+  const newId = uuidv4();
+  db.all(`INSERT INTO credentials(uuid, username, password, email) VALUES('${newId}', '${username}', '${password}', '${email}');`, (err, rows) => {
     if (err) {
       throw err;
     } else {
+      console.log(`User ${username} created`)
       res.send(200)
     }
   })
@@ -77,11 +72,27 @@ app.get('/users', (req, res) => {
   })
 })
 
-//feature 1: delete an account
+//feature 1: retrieve account details
 
-//feature 2: change password
+app.get('/profiles/:user', (req, res) => {
+  const user = req.params.user;
+  db.all(`SELECT * FROM credentials WHERE username = '${user}'`, (err, rows) => {
+    if (err) {
+      throw err;
+    } else {
+      console.log(`Information for user ${user} retrieved.`)
+      res.send(rows[0]);
+    }
+  })
+})
+//feature 2: change account info
 
-//feature 3: change username
+app.put('profiles/:user', (req, res) => {
+  const user = req.params.user;
+  res.send(200);
+})
+
+//feature 3: delete a user
 
 
 module.exports = app;
