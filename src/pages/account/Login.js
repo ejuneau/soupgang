@@ -15,7 +15,6 @@ export default function Login() {
       }, [inUp]);
     useEffect(() => {
         if(user) {
-            console.log(user);
             navigate('/profile')
           }
     }, [])

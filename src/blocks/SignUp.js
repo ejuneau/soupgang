@@ -1,4 +1,4 @@
-import { Form, Input, Button } from 'antd';
+import { Form, Input } from 'antd';
 import { useState, useContext } from "react";
 import UserContext from "../UserContext";
 import { Link } from "react-router-dom";
@@ -6,6 +6,8 @@ import axios from "axios";
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 const SignUp = (props) => {
   const { user, login, logout } = useContext(UserContext);
+  const [tempNewPassword, setTempNewPassword] = useState("");
+
     const onFinish = values => {
         const {username, password, email} = values;
         //encrypt user data
@@ -13,19 +15,22 @@ const SignUp = (props) => {
         //Create new user
         axios.post('http://localhost:3000/createUser', {username,encryptedPassword,email})
         .then(res => {
-            console.log(res.data)
             if (res.status === 200) {
                 alert('Account created, welcome to the soup gang!');
                 //Log in and redirect
                 login({
-                  id: res.data.user.uuid,
-                  username: res.data.user.username
+                  id: res.data.id,
                 });
                 //add check for confirmed password
                 //add check for duplicate email/username
             } 
         })
     }
+
+    function handleChange(e) {
+      setTempNewPassword(e.target.value);
+  }
+
 
     return (
         <Form
@@ -60,35 +65,40 @@ const SignUp = (props) => {
           </Form.Item>
           <Form.Item
             name="password"
+            label="Password"
             rules={[
               {
                 required: true,
-                message: 'Please input your Password!',
+                message: 'Please input your password!',
               },
             ]}
+            hasFeedback
           >
-            <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Password"
-            />
+            <Input.Password />
           </Form.Item>
+
           <Form.Item
-            name="password-2"
+            name="confirm"
+            label="Confirm Password"
+            dependencies={['password']}
+            hasFeedback
             rules={[
               {
                 required: true,
-                message: 'Please confirm your Password!',
+                message: 'Please confirm your password!',
               },
+              ({ getFieldValue }) => ({
+                validator(_, value) {
+                  if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                  }
+                  return Promise.reject(new Error('The new password that you entered do not match!'));
+                },
+              }),
             ]}
           >
-            <Input
-              prefix={<LockOutlined className="site-form-item-icon" />}
-              type="password"
-              placeholder="Confirm Password"
-            />
+            <Input.Password />
           </Form.Item>
-    
           <Form.Item>
           <button type="primary" htmlType="submit" className="button" style={{marginRight: "1.5em", display:'inline-block'}} >
               Sign Up

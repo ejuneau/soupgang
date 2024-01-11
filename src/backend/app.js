@@ -38,7 +38,6 @@ app.post('/validatePassword', (req, res) => {
     if ( rows.length > 0 ) {
       res.send({validation: true, user: rows[0]});
       console.log(`User ${username} has logged in with password ${password}`)
-      console.log(rows[0]);
     } else {
       res.send({validation: false});
     }
@@ -48,12 +47,12 @@ app.post('/validatePassword', (req, res) => {
 app.post('/createUser', (req, res) => {
   const { username, password, email } = req.body;
   const newId = uuidv4();
-  db.all(`INSERT INTO credentials(uuid, username, password, email) VALUES('${newId}', '${username}', '${password}', '${email}');`, (err, rows) => {
+  db.all(`INSERT INTO credentials(id, username, password, email) VALUES('${newId}', '${username}', '${password}', '${email}');`, (err, rows) => {
     if (err) {
       throw err;
     } else {
       console.log(`User ${username} created`)
-      res.send(200)
+      res.sendStatus(200)
     }
   })
 })
@@ -74,22 +73,32 @@ app.get('/users', (req, res) => {
 
 //feature 1: retrieve account details
 
-app.get('/profiles/:user', (req, res) => {
-  const user = req.params.user;
-  db.all(`SELECT * FROM credentials WHERE username = '${user}'`, (err, rows) => {
+app.get('/profiles/:id', (req, res) => {
+  const id = req.params.id;
+  db.all(`SELECT * FROM credentials WHERE id = '${id}'`, (err, rows) => {
     if (err) {
       throw err;
     } else {
-      console.log(`Information for user ${user} retrieved.`)
+      console.log(`Information for user ${id} retrieved.`)
       res.send(rows[0]);
     }
   })
 })
 //feature 2: change account info
 
-app.put('profiles/:user', (req, res) => {
-  const user = req.params.user;
-  res.send(200);
+app.put('/profiles/:id', (req, res) => {
+  const id = req.params.id;
+  const { username, password, email, first_name, last_name, address } = req.body;
+  db.all(`UPDATE credentials SET username = '${username}', password = '${password}', email='${email}', first_name='${first_name}', last_name='${last_name}', address='${address}' WHERE id = '${id}'`, (err, rows) => {
+    if (err) {
+      throw err;
+    } else {
+      console.log(id);
+      console.log(`Information for user ${id} updated.`);
+      res.sendStatus(200);
+    }
+  })
+  
 })
 
 //feature 3: delete a user

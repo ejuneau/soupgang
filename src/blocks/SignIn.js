@@ -18,11 +18,8 @@ const SignIn = (props) => {
         .then(res => {
             if (res.data.validation) {
               //log the user in
-              login({
-                id: res.data.user.uuid,
-                username: res.data.user.username
-              });
-              console.log(res.data);
+              login(res.data.user.id);
+
               //redirect to profile page
               navigate("/profile");
                 

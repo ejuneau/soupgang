@@ -40,23 +40,25 @@ login({
 */
   const login = userData => {
     setUser(userData);
+    // localStorage.setItem('user', true);
+    // localStorage.setItem('id', userData.id);
+    // localStorage.setItem('username', userData.username);
+    // localStorage.setItem('first_name', userData.first_name);
+    // localStorage.setItem('last_name', userData.last_Name);
+    // localStorage.setItem('email', userData.email);
     localStorage.setItem('user', true);
-    localStorage.setItem('id', userData.id);
-    localStorage.setItem('username', userData.username);
+    localStorage.setItem('id', JSON.stringify(userData).replace(/['"]+/g, ''));
   };
 
   const logout = () => {
     setUser(null);
+    localStorage.clear();
   }
 
   useEffect(() => {
     const loggedInUser = localStorage.getItem('user');
     if (loggedInUser) {
-
-      login({
-        id: localStorage.getItem('id'),
-        username: localStorage.getItem('username')
-      });
+      login(localStorage.getItem('id'))
     }
   }, [])
 

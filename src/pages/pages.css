@@ -179,5 +179,9 @@ input[type=text], input[type=password], input[type=email] {
 .profile-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: var(--white);
+}
+.profile-container form {
+    width: 500px;
 }
