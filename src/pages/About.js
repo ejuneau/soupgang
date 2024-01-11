@@ -16,7 +16,7 @@ export default function About() {
         <div className="about-info">
 			<h2>It all started with an idea.</h2>
 			<p>Most meal-kit services come from big central kitchens, bringing you ample convenience but no love - we're here to fix that.</p>
-			<p>By connecting you directly to humans with a passion for cooking, we make sure you get nourished with passion, at a rate that is completely flexible and adated to your individual needs.</p>
+			<p>By connecting you directly to humans with a passion for cooking, we make sure you get nourished with passion, at a rate that is completely flexible and adapted to your individual needs.</p>
 			<p>Our system is set up to scale humanely, such that your cohort's cooks are compensated more for every new member, while charging less per member.</p>
 			<p><b>Here's How it works:</b></p>
         </div>

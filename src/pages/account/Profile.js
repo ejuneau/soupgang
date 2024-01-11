@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button, Checkbox, message } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined, SmileOutlined, HomeOutlined } from '@ant-design/icons';
 
 import { useState } from 'react'
@@ -22,39 +22,37 @@ function Profile() {
     
     function  handleUsernameChange(e) {
       setUsername(e.target.value);
-      console.log(username);
     }
     function  handlePasswordChange(e) {
+      setPassword(e.target.value);
+    }
+    function handleNewPasswordChange(e) {
       setTempNewPassword(e.target.value);
-      console.log(tempNewPassword)
     }
     function  handleEmailChange(e) {
       setEmail(e.target.value);
-      console.log(email);
     }
     function  handleFirstNameChange(e) {
       setFirstName(e.target.value);
-      console.log(first_name);
     }
     function  handleLastNameChange(e) {
       setLastName(e.target.value);
-      console.log(last_name);
     }
     function  handleAddressChange(e) {
       setAddress(e.target.value);
-      console.log(address);
     }
 
     const onFinish = values => {
         // const {username, password, email, first_name, last_name, address} = values;
         //update user data
         const id = localStorage.getItem('id');
-        axios.put(`http://localhost:3000/profiles/${id}`, {username, tempNewPassword, email, first_name, last_name, address})
+        axios.put(`http://localhost:3000/profiles/${id}`, {username, password: tempNewPassword?tempNewPassword:password, email, first_name, last_name, address})
         .then(res => {
             if (res.status === 200) {
               //send confirmation
-              navigate("/profile");
-                
+              message.success("Changes saved!");
+              setTimeout(()=>{window.location.reload()},500)
+              
             } else {
                 alert('Something went wrong. Please try again.');
             }
@@ -78,7 +76,11 @@ function Profile() {
                 }
             })
         }
-    }, [])
+    }, [user])
+
+    const defaultAddress = "Address (required to join a cohort)";
+    const defaultFirstName = "First Name (Optional)";
+    const defaultLastName = "Last Name (Optional)";
 
 
     
@@ -113,7 +115,7 @@ function Profile() {
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
                   placeholder="(unchanged)"
-                  onChange={e => handlePasswordChange(e)}
+                  onChange={e => handleNewPasswordChange(e)}
                 />
               </Form.Item>
               <Form.Item
@@ -146,15 +148,15 @@ function Profile() {
               <p>This information is private, and is only shared with your cohort.</p>
               <p>First name:</p>
               <Form.Item name="first_name" >
-                <Input prefix={<SmileOutlined className="site-form-item-icon" />} placeholder={first_name?first_name:"First name (optional)"} onChange={(e) => {handleFirstNameChange(e)}}/>
+                <Input prefix={<SmileOutlined className="site-form-item-icon" />} placeholder={(first_name && first_name !== "undefined")?first_name:defaultFirstName} onChange={(e) => {handleFirstNameChange(e)}}/>
               </Form.Item>
               <p>Last name:</p>
               <Form.Item name="last_name" >
-                <Input prefix={<SmileOutlined className="site-form-item-icon" />} placeholder={last_name?last_name:"Last name (optional)"} onChange={(e) => {handleLastNameChange(e)}}/>
+                <Input prefix={<SmileOutlined className="site-form-item-icon" />} placeholder={(last_name && last_name !== "undefined")?last_name:defaultLastName} onChange={(e) => {handleLastNameChange(e)}}/>
               </Form.Item>
               <p>Address:</p>
               <Form.Item name="address" >
-                <Input prefix={<HomeOutlined className="site-form-item-icon" />} placeholder={address?address:"Address (required to join a cohort)"} onChange={(e) => {handleAddressChange(e)}}/>
+                <Input prefix={<HomeOutlined className="site-form-item-icon" />} placeholder={(address && address !== "undefined")?address:defaultAddress} onChange={(e) => {handleAddressChange(e)}}/>
               </Form.Item>
               <Form.Item>
                 <button type="primary" htmltype="submit" className="button" style={{marginRight: "1.5em", display:'inline-block'}} >
