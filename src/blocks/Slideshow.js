@@ -5,10 +5,14 @@ import Borscht              from '../assets/food/borscht.png';
 import ChickenNoodleSoup    from '../assets/food/chicken noodle soup.png';
 import ChickenPadThai       from '../assets/food/chicken pad thai.png';
 import ChickenPotPie        from '../assets/food/chicken pot pie.png';
-import ShrimpSalad          from '../assets/food/shrimp salad.png';
+import ChiliConCarne        from '../assets/food/chili.png';
 import FrenchFries          from '../assets/food/french fries.png';
+import LambShepherdsPie     from "../assets/food/lamb shepherd's pie.png";
 import PolishDonuts         from '../assets/food/polish donuts.png';
+import RiceAndChickenStew   from '../assets/food/rice and chicken stew.png';
+import RoastDuck            from '../assets/food/roast duck.png';
 import ShrimpFriedRice      from '../assets/food/shrimp fried rice.png';
+import ShrimpSalad          from '../assets/food/shrimp salad.png';
 import VeganCaesarSalad     from '../assets/food/vegan ceasar salad.png';
 
 import { Link } from 'react-router-dom';
@@ -21,24 +25,39 @@ export default function Slideshow(props) {
             cook:   "Alex (Montréal, QC)"
         },
         {
-            name:   "Beef Wellington",
-            img:    BeefWellington,
-            cook:   "Eve (Montréal, QC)"
+            name:   "Rice and Chicken Stew",
+            img:    RiceAndChickenStew,
+            cook:   "Tristan (Portland, OR)"
         },
         {
             name:   "Borscht",
             img:    Borscht,
-            cook:   "Carl (Miami, FL)"
+            cook:   "Remy (Paris, FR)"
+        },
+        {
+            name:   "Chili con Carne",
+            img:    ChiliConCarne,
+            cook:   "Monica (Manhattan, NY)"
         },
         {
             name:   "Chicken Noodle Soup",
             img:    ChickenNoodleSoup,
-            cook:   "Remy (Paris, FR)"
+            cook:   "Makoto (Tokyo, JP)"
+        },
+        {
+            name:   "Lamb Shepherd's Pie",
+            img:    LambShepherdsPie,
+            cook:   "Bob (Seymour's Bay, NJ)"
         },
         {
             name:   "Chicken Pad Thai",
             img:    ChickenPadThai,
             cook:   "Chell (Bolarus IX)"
+        },
+        {
+            name:   "Beef Wellington",
+            img:    BeefWellington,
+            cook:   "Eve (Montréal, QC)"
         },
         {
             name:   "Shrimp Fried Rice",
@@ -48,7 +67,7 @@ export default function Slideshow(props) {
         {
             name:   "Chicken Pot Pie",
             img:    ChickenPotPie,
-            cook:   "まこと (Tokyo, JP)"
+            cook:   "Shan (Wellington, NZ)"
         },
         {
             name:   "Shrimp Salad",
@@ -59,6 +78,11 @@ export default function Slideshow(props) {
             name:   "French Fries",
             img:    FrenchFries,
             cook:   "'Chef' (Stockholm, SE)"
+        },
+        {
+            name:   "Roast Duck",
+            img:    RoastDuck,
+            cook:   "Jack (Santa Monica, CA)"
         },
         {
             name:   "Polish Donuts",
@@ -75,6 +99,7 @@ export default function Slideshow(props) {
             img:    BeefBoneCurry,
             cook:   "Carmen (Chicago, IL)"
         },
+
     ]
     const imagesList = props.truncated?images.slice(0,6):images;
     return (

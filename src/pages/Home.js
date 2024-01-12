@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Slideshow from "../blocks/Slideshow";
-import LambShepherdsPie from '../assets/food/lamb shepherd\'s pie.png';
 
 
 export default function Home() {
@@ -12,7 +11,6 @@ export default function Home() {
     return(
       <div className="page">
         <div className="splash">
-          <img src={LambShepherdsPie} alt="Lamb Shepherd's Pie" />
           <h1 className="image-text">Kitchen's Open.</h1>
           <p className="subtitle image-text">Crowd-sourced, home-made meals every week.</p>
           <p className="image-text">#9OUTTA9</p>
