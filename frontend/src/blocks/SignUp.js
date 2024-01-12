@@ -7,13 +7,13 @@ import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 const SignUp = (props) => {
   const { login } = useContext(UserContext);
   const [tempNewPassword, setTempNewPassword] = useState("");
-
+  const apiEndpoint = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development')?"https://localhost:3000":"https://openkitchen-backend.onrender.com";
     const onFinish = values => {
         const {username, password, email} = values;
         //encrypt user data
         const encryptedPassword = password;
         //Create new user
-        axios.post('http://localhost:3000/createUser', {username,encryptedPassword,email})
+        axios.post(`${apiEndpoint}/createUser`, {username,encryptedPassword,email})
         .then(res => {
             if (res.status === 200) {
                 alert('Account created, welcome to the soup gang!');

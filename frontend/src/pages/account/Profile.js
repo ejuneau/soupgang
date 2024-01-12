@@ -11,7 +11,7 @@ function Profile() {
 
     const { user, logout } = useContext(UserContext);
     const navigate = useNavigate();
-
+    const apiEndpoint = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development')?"https://localhost:3000":"https://openkitchen-backend.onrender.com";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [tempNewPassword, setTempNewPassword] = useState("");
@@ -46,7 +46,7 @@ function Profile() {
         // const {username, password, email, first_name, last_name, address} = values;
         //update user data
         const id = localStorage.getItem('id');
-        axios.put(`http://localhost:3000/profiles/${id}`, {username, password: tempNewPassword?tempNewPassword:password, email, first_name, last_name, address})
+        axios.put(`${apiEndpoint}/profiles/${id}`, {username, password: tempNewPassword?tempNewPassword:password, email, first_name, last_name, address})
         .then(res => {
             if (res.status === 200) {
               //send confirmation
@@ -65,7 +65,7 @@ function Profile() {
         } else {
             const id = localStorage.getItem('id');
             console.log()
-            axios.get(`http://localhost:3000/profiles/${id}`).then(res => {
+            axios.get(`${apiEndpoint}/profiles/${id}`).then(res => {
                 if (res.data) {
                     setUsername(res.data.username);
                     setPassword(res.data.password);

@@ -9,12 +9,12 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const SignIn = (props) => {
     const { login } = useContext(UserContext);
-
+    const apiEndpoint = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development')?"https://localhost:3000":"https://openkitchen-backend.onrender.com";
     const navigate = useNavigate();
     const onFinish = values => {
         const {username, password} = values;
         //encrypt user data?
-        axios.post('http://localhost:3000/validatePassword', {username,password})
+        axios.post(`${apiEndpoint}/validatePassword`, {username,password})
         .then(res => {
             if (res.data.validation) {
               //log the user in
