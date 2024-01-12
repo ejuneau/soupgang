@@ -4,6 +4,7 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const sqlite3 = require('sqlite3').verbose();
 const { v4: uuidv4 } = require("uuid");
+var CryptoJS = require("crypto-js");
 
 const cors = require("cors");
 
@@ -31,13 +32,14 @@ let db = new sqlite3.Database('./bin/credentials.db', (err) => {
 
 app.post('/validatePassword', (req, res) => {
   const { username, password } = req.body;
-  db.all(`SELECT * FROM credentials WHERE username = '${username}' AND password = '${password}'`, (err, rows) => {
+  const encryptedPassword = CryptoJS.SHA3(password);
+  db.all(`SELECT * FROM credentials WHERE username = '${username}' AND password = '${encryptedPassword}'`, (err, rows) => {
     if (err) {
       console.log(err);
     }
     if ( rows.length > 0 ) {
       res.send({validation: true, user: rows[0]});
-      console.log(`User ${username} has logged in with password ${password}`)
+      console.log(`User ${username} has logged in.`)
     } else {
       res.send({validation: false});
     }
@@ -46,8 +48,9 @@ app.post('/validatePassword', (req, res) => {
 
 app.post('/createUser', (req, res) => {
   const { username, password, email } = req.body;
+  const encryptedPassword = CryptoJS.SHA3(password);
   const newId = uuidv4();
-  db.all(`INSERT INTO credentials(id, username, password, email) VALUES('${newId}', '${username}', '${password}', '${email}');`, (err, rows) => {
+  db.all(`INSERT INTO credentials(id, username, password, email) VALUES('${newId}', '${username}', '${encryptedPassword}', '${email}');`, (err, rows) => {
     if (err) {
       throw err;
     } else {
@@ -89,7 +92,8 @@ app.get('/profiles/:id', (req, res) => {
 app.put('/profiles/:id', (req, res) => {
   const id = req.params.id;
   const { username, password, email, first_name, last_name, address } = req.body;
-  db.all(`UPDATE credentials SET username = '${username}', password = '${password}', email='${email}', first_name='${first_name}', last_name='${last_name}', address='${address}' WHERE id = '${id}'`, (err, rows) => {
+  const encryptedPassword = CryptoJS.SHA3(password);
+  db.all(`UPDATE credentials SET username = '${username}', password = '${encryptedPassword}', email='${email}', first_name='${first_name}', last_name='${last_name}', address='${address}' WHERE id = '${id}'`, (err, rows) => {
     if (err) {
       throw err;
     } else {
