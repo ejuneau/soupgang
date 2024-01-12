@@ -3,7 +3,6 @@ import { useContext, useState } from "react";
 import Hamburger from "./Hamburger";
 import UserContext from "../UserContext";
 import Logo from '../assets/logo.png';
-import { NavbarBrand } from "react-bootstrap";
 
 
 export default function Header() {

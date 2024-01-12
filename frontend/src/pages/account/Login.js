@@ -17,7 +17,7 @@ export default function Login() {
         if(user) {
             navigate('/profile')
           }
-    }, [])
+    }, [navigate, user])
               
     function toggleInUp() {
         inUp === "in"? setInUp("up"):setInUp("in");

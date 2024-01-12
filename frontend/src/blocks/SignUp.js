@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
 const SignUp = (props) => {
-  const { user, login, logout } = useContext(UserContext);
+  const { login } = useContext(UserContext);
   const [tempNewPassword, setTempNewPassword] = useState("");
 
     const onFinish = values => {
@@ -65,7 +65,6 @@ const SignUp = (props) => {
           </Form.Item>
           <Form.Item
             name="password"
-            label="Password"
             rules={[
               {
                 required: true,
@@ -74,12 +73,12 @@ const SignUp = (props) => {
             ]}
             hasFeedback
           >
-            <Input.Password />
+            <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} onChange={e => handleChange(e)} placeholder="Password"/>
           </Form.Item>
 
-          <Form.Item
+          {tempNewPassword &&
+            <Form.Item
             name="confirm"
-            label="Confirm Password"
             dependencies={['password']}
             hasFeedback
             rules={[
@@ -97,8 +96,8 @@ const SignUp = (props) => {
               }),
             ]}
           >
-            <Input.Password />
-          </Form.Item>
+            <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Confirm password"/>
+          </Form.Item>}
           <Form.Item>
           <button type="primary" htmlType="submit" className="button" style={{marginRight: "1.5em", display:'inline-block'}} >
               Sign Up

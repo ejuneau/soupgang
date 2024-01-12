@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { Form, Input, Button, Checkbox, message } from 'antd';
+import { Form, Input, message } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined, SmileOutlined, HomeOutlined } from '@ant-design/icons';
 
 import { useState } from 'react'
@@ -23,9 +23,9 @@ function Profile() {
     function  handleUsernameChange(e) {
       setUsername(e.target.value);
     }
-    function  handlePasswordChange(e) {
-      setPassword(e.target.value);
-    }
+    // function  handlePasswordChange(e) {
+    //   setPassword(e.target.value);
+    // }
     function handleNewPasswordChange(e) {
       setTempNewPassword(e.target.value);
     }
@@ -76,7 +76,7 @@ function Profile() {
                 }
             })
         }
-    }, [user])
+    }, [user, navigate])
 
     const defaultAddress = "Address (required to join a cohort)";
     const defaultFirstName = "First Name (Optional)";

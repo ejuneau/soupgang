@@ -1,14 +1,14 @@
-import { useState, useContext } from "react";
+import {  useContext } from "react";
 import UserContext from "../UserContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // import 'antd/dist/antd.css';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Checkbox } from 'antd';
 import { Link } from "react-router-dom";
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const SignIn = (props) => {
-    const { user, login, logout } = useContext(UserContext);
+    const { login } = useContext(UserContext);
 
     const navigate = useNavigate();
     const onFinish = values => {
