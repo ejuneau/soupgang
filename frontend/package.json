@@ -1,6 +1,7 @@
 {
   "name": "soupgang",
   "homepage": "https://openkitchen-frontent.onrender.com/",
+  "proxy": "https://openkitchen-backend.onrender.com/",
   "version": "0.3.0",
   "private": true,
   "dependencies": {
