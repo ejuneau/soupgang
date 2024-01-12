@@ -9,7 +9,7 @@ export default function NotFound() {
     return(
         <div className="page" style={{height: "calc(100vh - 5rem)"}}>
         <div className="splash">
-            <h2>4️⃣🥴4️⃣ - Kitchen's Closed.</h2>
+            <h2 className="splash-text">4️⃣🥴4️⃣ - Kitchen's Closed.</h2>
             <Link to="/" className="button">Take me back home</Link>
             <p><em>Wasn't trying to break this site? <Link to="/contact" style={{color: "#CCA43B"}}>Tell us about it</Link></em>.</p>
         </div>

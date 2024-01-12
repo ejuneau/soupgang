@@ -37,15 +37,18 @@ export default function Hamburger(props) {
                     margin: 1rem;
                     padding: 1rem;
                 }
-                .splash h1 {
-                    margin-top: 5rem;
-                    margin-bottom: 0;
+                h1.splash-text {
+                    margin: 0;
                 }
                 .text-CTA {
                     max-width: unset;
                 }
-                .steps {
+                .steps, .about-info p, .pricing > * {
                     width: unset;
+                    max-width: unset;
+                }
+                table {
+                    font-size: 0.85rem;
                 }
                 .slideshow {
                     width: 100%;
@@ -63,7 +66,7 @@ export default function Hamburger(props) {
                     opacity: ${props.hamburgerOpen? '1' : '0'};
                     background-color: #242F40;;
                     top: 0;
-                    height: 90vh;
+                    height: 100vh;
                     width: 110vw;
                     justify-content: center;
                     align-items: center;
@@ -87,6 +90,10 @@ export default function Hamburger(props) {
                 }
                 .burger3{
                     transform: ${props.hamburgerOpen? 'rotate(-45deg)' : 'rotate(0deg)'}
+                }
+                html {
+                    height: ${props.hamburgerOpen? '100vh':'auto'};
+                    overflow: ${props.hamburgerOpen? 'hidden':'auto'};
                 }
             }
         `}

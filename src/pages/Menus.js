@@ -8,7 +8,7 @@ export default function Menus() {
     return(
       <div className="page">
         <div className="splash">
-        <h1>What are people cooking? </h1>
+        <h1 className="splash-text">What are people cooking? </h1>
         </div>
         <Slideshow truncated={false} />
       </div>

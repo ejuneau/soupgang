@@ -10,7 +10,7 @@ export default function About() {
     return(
       <div className="page">
         <div className="splash">
-			<h1>About the kitchen</h1>
+			<h1 className="splash-text">About the kitchen</h1>
 			{/* <p className="subtitle"> </p> */}
         </div>
         <div className="about-info">
@@ -30,13 +30,14 @@ export default function About() {
 				<ul>
 					<p><li>How many different dishes will be made this month?</li></p>
 					<p><li>How many portions of each dish does everyone need?</li></p>
-					<p><li>Any preferences for which dishes are served this month?</li></p>
+					<p><li>Which dietary restrictions should be accounted for?</li></p>
+					<p><li>Do any diners require assistance picking up food?</li></p>
 				</ul>
 				<p>Questions that are nice to have answered:</p>
 				<ul>
-					<p><li>How many different dishes will be made this month?</li></p>
-					<p><li>How many portions of each dish does everyone need?</li></p>
 					<p><li>Any preferences for which dishes are served this month?</li></p>
+					<p><li>Do any diners have  specialty equipment they could lend the cook?</li></p>
+					<p><li>Can you share your recipe? (Answer at your discretion, cooks!)</li></p>
 				</ul>
 			</div>
         </div>
@@ -44,7 +45,7 @@ export default function About() {
 			<h2>Pricing</h2>
 			<p>Due to the cohort system and the variance of the prices for groceries, it is difficult to give an accurate price for the service that OpenKitchen provides.</p>
 			<p>Prices for one month may be higher if there are more complex dishes, fewer cohort diners, or exotic ingredients.</p>
-			<p>Here is a general guide that is based on a small, single-cook cohort tests in Montréal, Québec (prices in $CAD):</p>
+			<p>Here is a general guide that is based on a small, single-cook cohort test in Montréal, Québec (prices in $CAD):</p>
 			<table>
 				<tr>
 					<th>Cohort size</th>
@@ -54,7 +55,7 @@ export default function About() {
 					<td>6 + 1 Cook</td>
 				</tr>
 				<tr>
-					<th>TOTAL</th>
+					<th>Price per diner</th>
 					<td>$39</td>
 					<td>$48</td>
 					<td>$55</td>

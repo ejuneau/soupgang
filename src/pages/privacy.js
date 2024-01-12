@@ -8,7 +8,7 @@ export default function Privacy() {
     return(
         <div className="page">
             <div className="splash">
-                <h1>Privacy</h1>
+                <h1 className="splash-text">Privacy Policy</h1>
                 <p>Last edited: 07/11/2023</p>
             </div>
             <div className="privacy-container">

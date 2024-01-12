@@ -52,8 +52,13 @@
     justify-content: center;
     padding: 3em;
 }
+.about-info p {
+    width: 40%;
+}
 
-
+.splash-text {
+    text-align: center;
+}
 .text-CTA {
     display: flex;
     justify-content: space-evenly;
@@ -138,6 +143,14 @@
 }
 .privacy a {
     color: var(--gold);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 .privacy a:visited {
     color: #A8862C;

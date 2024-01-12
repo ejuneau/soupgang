@@ -7,7 +7,7 @@ export default function Contact() {
     return(
         <div className="page">
             <div className="splash">
-                <h1>Contact the Kitchen</h1>
+                <h1 className="splash-text">Contact the Kitchen</h1>
             </div>
             <div>
                 <div>Page under Construction! Come back later 👀</div>

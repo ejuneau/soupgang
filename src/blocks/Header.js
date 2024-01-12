@@ -1,13 +1,20 @@
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import Hamburger from "./Hamburger";
 import UserContext from "../UserContext";
 import Logo from '../assets/logo.png';
+import { NavbarBrand } from "react-bootstrap";
 
 
 export default function Header() {
     const {user} = useContext(UserContext);
+    const [hamburgerOpen, setHamburgerOpen] = useState(false);
+    const toggleHamburger = () => {
+        setHamburgerOpen(!hamburgerOpen);
+    }
     var prevScrollpos = window.scrollY;
     window.onscroll = function() {
+        if (!hamburgerOpen) {
         var currentScrollPos = window.scrollY;
         if (prevScrollpos > currentScrollPos) {
             document.getElementById("navbar").style.top = "0";
@@ -15,16 +22,27 @@ export default function Header() {
             document.getElementById("navbar").style.top = "-5rem";
         }
       prevScrollpos = currentScrollPos;
+    }
     } 
     return(
         <header id="navbar">
             <NavLink to="/" id="logo" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}><img src={Logo} alt="OpenKitchen Logo" />OpenKitchen</NavLink>  
             <nav>
-                <NavLink to="/about/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"}>About</NavLink>  
-                <NavLink to="/menus/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"}>Menus</NavLink>  
-                <NavLink to="/contact/"  className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"}>Contact</NavLink>
-                {user?<NavLink to="/profile/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"}>Profile</NavLink>:<NavLink to="/login/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"}>Login</NavLink>}               
+                {hamburgerOpen &&
+                <NavLink to="/"          className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >Home</NavLink>
+                }
+                <NavLink to="/about/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >About</NavLink>  
+                <NavLink to="/menus/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >Menus</NavLink>  
+                <NavLink to="/contact/"  className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >Contact</NavLink>
+                {user?
+                <NavLink to="/profile/"  className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >Profile</NavLink>
+                :
+                <NavLink to="/login/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >Login</NavLink>
+                }               
             </nav>
+            <div className="hamburger" onClick={toggleHamburger}>
+                <Hamburger hamburgerOpen={hamburgerOpen} />
+            </div>
         </header>
     )
 }

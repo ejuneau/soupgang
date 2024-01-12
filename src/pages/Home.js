@@ -11,9 +11,9 @@ export default function Home() {
     return(
       <div className="page">
         <div className="splash">
-          <h1 className="image-text">Kitchen's Open.</h1>
-          <p className="subtitle image-text">Crowd-sourced, home-made meals every week.</p>
-          <p className="image-text">#9OUTTA9</p>
+          <h1 className="splash-text">Kitchen's Open.</h1>
+          <p className="subtitle splash-text">Crowd-sourced, home-made meals every week.</p>
+          <p className="splash-text">#9OUTTA9</p>
         </div>
         <div className="about-info">
           <h1>What are we?</h1>
