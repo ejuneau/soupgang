@@ -73,14 +73,15 @@ useEffect(() => {
             <Route   path="/"           element={<Page />}>
 
               <Route index  path=""     element={<Home />}/>
-              <Route path="menus"      element={<Menus />}/>
-              <Route path="about"      element={<About />} />
-              <Route path="contact"    element={<Contact />}/>
-              <Route path="login"      element={<Login />}/> 
-              <Route path="profile"    element={<Profile />}/>
-              <Route path="profile/cohort"   element={<Cohort />}/>
-              <Route path="profile/payment"  element={<Payment />}/>
-              <Route path="privacy"    element={<Privacy />} />
+              <Route path="menus"       element={<Menus />}/>
+              <Route path="about"       element={<About />} />
+              <Route path="contact"     element={<Contact />}/>
+              <Route path="login"       element={<Login />}/> 
+              <Route path="profile"     element={<Profile />}>
+                <Route path="cohort"    element={<Cohort />}/>
+                <Route path="payment"   element={<Payment />}/>
+              </Route>
+              <Route path="privacy"     element={<Privacy />} />
               <Route path="/*"          element={<NotFound />} />
 
             </Route>

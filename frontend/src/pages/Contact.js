@@ -10,7 +10,11 @@ export default function Contact() {
                 <h1 className="splash-text">Contact the Kitchen</h1>
             </div>
             <div>
-                <div>Page under Construction! Come back later 👀</div>
+                <div style={{height: "calc(100vh - 10rem - 400px - 5vh)", backgroundColor: "#E5E5E5" }}>
+                    <h1 style={{marginTop: "0"}}>This is a portfolio project</h1>
+                    <p>just email me</p>
+                    <a href="mailto:rcjuneau8@gmail.com">rcjuneau8@gmail.com</a>
+                </div>
             </div>
         </div>
     )
