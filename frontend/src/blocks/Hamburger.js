@@ -54,10 +54,11 @@ export default function Hamburger(props) {
                     width: 100%;
                 }
                 .slideshow-slide {
-                    width: 40%;
                     height: 40%;
+                    width: 40%;
                 }
                 .slideshow-image {
+                    height: 170px;
                     height: 170px;
                 }
                 header nav {
@@ -94,6 +95,14 @@ export default function Hamburger(props) {
                 html {
                     height: ${props.hamburgerOpen? '100vh':'auto'};
                     overflow: ${props.hamburgerOpen? 'hidden':'auto'};
+                }
+                .profile-sidebar {
+                    margin-left: 1rem;
+                    margin-right: 0.5rem;
+                }
+                .profile-content {
+                    margin-right: 1rem;
+                    margin-left:0.5rem;
                 }
             }
         `}

@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router";
-import React, {useContext, useState, useEffect} from 'react';
-import UserContext from "../../UserContext";
+import React, {useState, useEffect} from 'react';
+import { useAuth } from "../../contexts/AuthContent";
 
 import SignIn from "../../blocks/SignIn";
 import SignUp from "../../blocks/SignUp";
 
 export default function Login() {
-    const { user } = useContext(UserContext);
+    const {currentUser} = useAuth();
     const navigate = useNavigate();
     const [inUp, setInUp] = useState("in");
     useEffect(() => {
@@ -14,10 +14,10 @@ export default function Login() {
         window.scrollTo(0, 0);
       }, [inUp]);
     useEffect(() => {
-        if(user) {
+        if(currentUser) {
             navigate('/profile')
           }
-    }, [navigate, user])
+    }, [navigate, currentUser])
               
     function toggleInUp() {
         inUp === "in"? setInUp("up"):setInUp("in");

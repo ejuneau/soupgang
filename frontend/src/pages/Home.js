@@ -17,10 +17,10 @@ export default function Home() {
         </div>
         <div className="about-info">
           <h1>What are we?</h1>
-          <div className="text-CTA">
+
             <p>Open Kitchen is a meal provider service, done differently. With a focus on community and a passion for authentic recipes, your meals won't come from a faceless big brand, but neighbours, families, and - if we do our job right - new friends.</p>
             <Link to="/about" className="button">Learn more</Link>
-          </div>
+
         </div>
         <div className="how-it-works">
           <h1>Here's how it works:</h1>

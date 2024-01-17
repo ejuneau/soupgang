@@ -1,30 +1,68 @@
 import { Form, Input } from 'antd';
-import { useState, useContext } from "react";
-import UserContext from "../UserContext";
-import { Link } from "react-router-dom";
-import axios from "axios";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { UserOutlined, LockOutlined, MailOutlined } from '@ant-design/icons';
+import { setDoc, doc } from "firebase/firestore";
+import { db } from '../firebase';
+
+
+
+
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
+
+
 const SignUp = (props) => {
-  const { login } = useContext(UserContext);
+
+  const navigate = useNavigate();
+
   const [tempNewPassword, setTempNewPassword] = useState("");
-  const apiEndpoint = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development')?"https://localhost:3000":"https://openkitchen-backend.onrender.com";
-    const onFinish = values => {
+
+  async function createFirestoreEntry(user, username, email) {
+    try {
+      await setDoc(doc(db, "users", user.uid), {
+        email: email,
+        username: username,
+      })
+    } catch (error) {
+      throw (error)
+    }
+  }
+
+  const validateEmail = (rule, value, callback) => {
+    const emailRegex = /^[A-Za-z0-9+_.-]+@(.+)$/;
+    if (!emailRegex.test(value)) {
+      callback('Invalid Email address');
+    } else if (value==="") {
+      callback();
+    } else {
+      callback();
+    }
+  };
+
+    async function onFinish(values) {
         const {username, password, email} = values;
         //encrypt user data
         const encryptedPassword = password;
         //Create new user
-        axios.post(`${apiEndpoint}/createUser`, {username,encryptedPassword,email})
-        .then(res => {
-            if (res.status === 200) {
-                alert('Account created, welcome to the soup gang!');
-                //Log in and redirect
-                login({
-                  id: res.data.id,
-                });
-                //add check for confirmed password
-                //add check for duplicate email/username
-            } 
+
+        await createUserWithEmailAndPassword(auth, email, encryptedPassword)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          //Add user data to Firestore
+          createFirestoreEntry(user, username, email);
+          navigate("/profile");
+          //...
         })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+          //...
+        });
+
     }
 
     function handleChange(e) {
@@ -44,14 +82,13 @@ const SignUp = (props) => {
           <Form.Item
             name="email"
             rules={[
-              {
-                required: true,
-                message: 'Please input your Email!',
-              },
+              { required: true, message: 'Please input your Email!' },
+              { validator: validateEmail }
             ]}
           >
             <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
           </Form.Item>
+
           <Form.Item
             name="username"
             rules={[
@@ -99,7 +136,7 @@ const SignUp = (props) => {
             <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Confirm password"/>
           </Form.Item>}
           <Form.Item>
-          <button type="primary" htmlType="submit" className="button" style={{marginRight: "1.5em", display:'inline-block'}} >
+          <button type="primary" htmltype="submit" className="button" style={{marginRight: "1.5em", display:'inline-block'}} >
               Sign Up
             </button>
             Or <Link to="/login" onClick={()=> props.toggleInUp()}>log in</Link>

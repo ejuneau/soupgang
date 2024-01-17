@@ -1,12 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Hamburger from "./Hamburger";
-import UserContext from "../UserContext";
+import { useAuth } from "../contexts/AuthContent";
 import Logo from '../assets/logo.png';
 
 
 export default function Header() {
-    const {user} = useContext(UserContext);
+    const {currentUser} = useAuth();
     const [hamburgerOpen, setHamburgerOpen] = useState(false);
     const toggleHamburger = () => {
         setHamburgerOpen(!hamburgerOpen);
@@ -27,17 +27,18 @@ export default function Header() {
         <header id="navbar">
             <NavLink to="/" id="logo" className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}><img src={Logo} alt="OpenKitchen Logo" />OpenKitchen</NavLink>  
             <nav>
-                {hamburgerOpen &&
+
                 <NavLink to="/"          className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >Home</NavLink>
-                }
                 <NavLink to="/about/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >About</NavLink>  
                 <NavLink to="/menus/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >Menus</NavLink>  
                 <NavLink to="/contact/"  className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >Contact</NavLink>
-                {user?
+
+                {currentUser?
                 <NavLink to="/profile/"  className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >Profile</NavLink>
                 :
                 <NavLink to="/login/"    className={({ isActive, isPending }) => isPending ? "custom-underline white pending" : isActive ? "custom-underline white active" : "custom-underline white"} onClick={()=>toggleHamburger()} >Login</NavLink>
-                }               
+                }     
+      
             </nav>
             <div className="hamburger" onClick={toggleHamburger}>
                 <Hamburger hamburgerOpen={hamburgerOpen} />

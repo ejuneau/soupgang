@@ -1,32 +1,32 @@
-import {  useContext } from "react";
-import UserContext from "../UserContext";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-// import 'antd/dist/antd.css';
 import { Form, Input, Checkbox } from 'antd';
 import { Link } from "react-router-dom";
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { MailOutlined, LockOutlined } from '@ant-design/icons';
+
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
 
 const SignIn = (props) => {
-    const { login } = useContext(UserContext);
-    const apiEndpoint = (!process.env.NODE_ENV || process.env.NODE_ENV === 'development')?"https://localhost:3000":"https://openkitchen-backend.onrender.com";
     const navigate = useNavigate();
-    const onFinish = values => {
-        const {username, password} = values;
-        //encrypt user data?
-        axios.post(`${apiEndpoint}/validatePassword`, {username,password})
-        .then(res => {
-            if (res.data.validation) {
-              //log the user in
-              login(res.data.user.id);
 
-              //redirect to profile page
-              navigate("/profile");
-                
-            } else {
-                alert('Your password is not correct. Please try again.');
-            }
+    const onFinish = values => {
+        const {email, password} = values;
+        //encrypt user data
+        const encryptedPassword = password;
+
+        signInWithEmailAndPassword(auth, email, encryptedPassword)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          navigate("/profile");
+          console.log(user);
         })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage);
+        });
+
     }
 
     return (
@@ -39,15 +39,15 @@ const SignIn = (props) => {
           onFinish={onFinish}
         >
           <Form.Item
-            name="username"
+            name="email"
             rules={[
               {
                 required: true,
-                message: 'Please input your Username!',
+                message: 'Please input your Email!',
               },
             ]}
           >
-            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+            <Input prefix={<MailOutlined className="site-form-item-icon" />} placeholder="Email" />
           </Form.Item>
           <Form.Item
             name="password"

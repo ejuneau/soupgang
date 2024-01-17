@@ -52,9 +52,9 @@
     justify-content: center;
     padding: 3em;
 }
-/* .about-info p {
+.about-info p {
     width: 40%;
-} */
+}
 
 .splash-text {
     text-align: center;
@@ -141,7 +141,7 @@
     display: flex;
     flex-direction: column;   
 }
-.privacy a {
+.privacy a, .profile-content a {
     color: var(--gold);
     overflow-wrap: break-word;
     word-wrap: break-word;
@@ -191,10 +191,75 @@ input[type=text], input[type=password], input[type=email] {
 }
 .profile-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     background-color: var(--white);
+    min-height: calc(100vh - 15rem - 5vh - 400px);
 }
-.profile-container form {
-    width: 500px;
+.profile-navbar {
+    height: 5rem;
+    background-color: var(--blue);
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    justify-content: center;
+}
+.profile-navbar a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 7.5rem;
+    margin: 0 -2.5rem;
+    text-align: center;
+    clip-path: polygon(5rem 0%, calc(100%) 0%, calc(100% - 5rem) 100%, 0% 100%); 
+    color: var(--white);
+    text-decoration: none;
+}
+.profile-navbar a:hover {
+    background-color: #364761;
+}
+.profile-navbar a.active {
+    background-color: var(--white);
+    color: var(--black);
+}
+.profile-navbar-first, .profile-navbar-last {
+    flex-grow: 1;
+}
+.profile-navbar-first {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    border-right: 1px solid var(--white);
+}
+.profile-navbar-last {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    border-left: 1px solid var(--white);
+
+}
+.profile-navbar a.profile-navbar-first {
+    clip-path: polygon(0% 0%, calc(100%) 0%, calc(100% - 5rem) 100%, 0% 100%); 
+    justify-content: right;
+}
+.profile-navbar a.profile-navbar-last {
+    clip-path: polygon(5rem 0%, calc(100%) 0%, 100% 100%, 0% 100%); 
+    justify-content: left;
+}
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5rem;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    margin-right: 2.5rem;
+}
+.profile-sidebar h3 {
+    margin-bottom: 0;
+}
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    text-align: center;
+    margin-right: 5rem;
+    margin-left: 2.5rem;
 }

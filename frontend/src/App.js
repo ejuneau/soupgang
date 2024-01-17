@@ -1,7 +1,6 @@
 import { Outlet, Routes, Route } from 'react-router';
 import { ConfigProvider } from "antd";
-import UserContext from './UserContext';
-import { useState, useEffect } from 'react';
+import {  useEffect } from 'react';
 
 import './App.css';
 import './blocks/blocks.css';
@@ -17,7 +16,16 @@ import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 import Login from './pages/account/Login';
 import Profile from './pages/account/Profile';
+import Cohort from './pages/account/Profile/Cohort';
+import Payment from './pages/account/Profile/Payment';
 import Privacy from './pages/privacy';
+
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase';
+import { useNavigate } from 'react-router';
+
+import { AuthProvider } from './contexts/AuthContent';
+
 
 function Page() {
   return(
@@ -31,40 +39,28 @@ function Page() {
 
 function App() {
 
-  const [user, setUser] = useState(null);
-/*              
-login({
-  id: res.data.user.uuid,
-  username: res.data.user.username
-});
-*/
-  const login = userData => {
-    setUser(userData);
-    // localStorage.setItem('user', true);
-    // localStorage.setItem('id', userData.id);
-    // localStorage.setItem('username', userData.username);
-    // localStorage.setItem('first_name', userData.first_name);
-    // localStorage.setItem('last_name', userData.last_Name);
-    // localStorage.setItem('email', userData.email);
-    localStorage.setItem('user', true);
-    localStorage.setItem('id', JSON.stringify(userData).replace(/['"]+/g, ''));
-  };
+  const navigate = useNavigate();
 
-  const logout = () => {
-    setUser(null);
-    localStorage.clear();
-  }
+useEffect(() => {
 
-  useEffect(() => {
-    const loggedInUser = localStorage.getItem('user');
-    if (loggedInUser) {
-      login(localStorage.getItem('id'))
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      //...
+      console.log("uid", uid);
+    } else {
+      // User is signed out
+      // ... 
+      console.log("user is logged out");
+      navigate("/login");
     }
-  }, [])
+  })
+}, [navigate])
 
   return (
-    <UserContext.Provider 
-    value={{ user, login, logout}}>
+    <AuthProvider>
         <ConfigProvider theme={{
           token: {
             colorPrimary: '#364761',
@@ -74,21 +70,23 @@ login({
           }
         }}>
           <Routes>
-            <Route   path="/"       element={<Page />}>
+            <Route   path="/"           element={<Page />}>
 
-              <Route path="/"         element={<Home />}/>
-              <Route path="/menus/"   element={<Menus />}/>
-              <Route path="/about/"   element={<About />} />
-              <Route path="/contact/" element={<Contact />} />
-              <Route path="/login/"   element={<Login />} /> 
-              <Route path="/profile/" element={<Profile />} />
-              <Route path="/privacy/" element={<Privacy />} />
-              <Route path="/*"        element={<NotFound />} />
+              <Route index  path=""     element={<Home />}/>
+              <Route path="menus"      element={<Menus />}/>
+              <Route path="about"      element={<About />} />
+              <Route path="contact"    element={<Contact />}/>
+              <Route path="login"      element={<Login />}/> 
+              <Route path="profile"    element={<Profile />}/>
+              <Route path="profile/cohort"   element={<Cohort />}/>
+              <Route path="profile/payment"  element={<Payment />}/>
+              <Route path="privacy"    element={<Privacy />} />
+              <Route path="/*"          element={<NotFound />} />
 
             </Route>
           </Routes>
         </ConfigProvider> 
-    </UserContext.Provider>
+    </AuthProvider>
   );
 }
 
