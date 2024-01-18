@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import Slideshow from "../blocks/Slideshow";
 
-
 export default function Home() {
   useEffect(() => {
     document.title = "Home | OpenKitchen 🧑‍🍳"

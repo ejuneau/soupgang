@@ -1,5 +1,5 @@
 import { Outlet, useNavigate } from "react-router";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import React, {useCallback, useEffect, useState} from 'react';
 import { useAuth } from "../../contexts/AuthContent";
 
@@ -12,7 +12,6 @@ function Profile() {
 
   useEffect(() => {
     document.title = "Profile | OpenKitchen 🧑‍🍳";
-    window.scrollTo(0, 0);
   }, [])
 
     const navigate = useNavigate();
@@ -28,31 +27,46 @@ function Profile() {
         throw(error);
       })
     }
+    
+    const currentUser = useAuth().currentUser;
 
-    const {currentUser} = useAuth();
+    useEffect(() => {
+      if (currentUser === null) {
+        navigate("/login");
+      }
+    }, [navigate, currentUser]);
 
     const getProfileData = useCallback(async()  => {
+
+      if (currentUser.currentUser === null) { return }
       const docRef = doc(db, "users", currentUser.uid);
       try {
         const docSnap = await getDoc(docRef);
         if(docSnap.exists()) {
           setProfileData(docSnap.data());
           console.log("Retrieved profile data");
-          console.log(profileData);
-          document.title = `${profileData.first_name}'s Profile | OpenKitchen 🧑‍🍳`;
-
         } else {
           console.log(`User with uid ${currentUser.uid} does not exist`)
         }
       } catch (error) {
       console.log(error);
       }
-    }, [profileData, currentUser.uid]);
+    }, [currentUser.currentUser, currentUser.uid]);
 
     //Get profile data
     useEffect(() => {
       getProfileData();
     }, [getProfileData])
+
+    useEffect(() => {
+      if (profileData.first_name) {
+        document.title = `${profileData.first_name}'s Profile | OpenKitchen 🧑‍🍳`;
+      } else if (profileData.username) {
+        document.title = `${profileData.username}'s Profile | OpenKitchen 🧑‍🍳`;
+      } else {
+        document.title = "Profile | OpenKitchen 🧑‍🍳";
+      }
+    }, [profileData.first_name, profileData.username])
 
       return (
         <div className="page">
@@ -77,13 +91,7 @@ function Profile() {
               <h3>Can cook?</h3><p>{profileData.is_cook?"Yes":"No"}</p>
             </div>
             <div className="profile-content">
-              <Outlet />
-              {window.location.pathname === "/profile/" && 
-              <>
-                <h1>You're not in any cohorts right now.</h1>
-                <p>To view your previous orders/cohorts, check out the <Link to="/profiles/cohorts">cohort</Link> tab</p>
-              </>
-              }
+              <Outlet context={profileData}/>
             </div>
           </div>
         </div>)

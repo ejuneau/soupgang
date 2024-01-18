@@ -82,8 +82,12 @@ header a, footer a {
     position: absolute !important;
     font-family: 'Lexend';
     width: 100%;
-    top: 50%;
     margin: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
 }
 
 .slideshow-image {
@@ -124,3 +128,41 @@ header a, footer a {
     align-items: center;
 }
 
+.cookies-container {
+    width: 100vw;
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--gold);
+    color: var(--black);
+    padding: 3rem;
+}
+.privacy-link {
+    color: #364761;
+}
+
+.login-with-google {
+    display: flex;
+    width: 30vw;
+    background-color: white;
+    border-radius: 5px;
+    height: 60px;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 16px;
+    max-width: 243.433px;
+    margin: 2.5em;
+}
+.login-with-google svg {
+    width: 10%;
+
+}
+.login-with-google p {
+    font-family: 'Roboto';
+}
+
+.ant-form * {
+    font-size: 1rem !important;
+}

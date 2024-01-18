@@ -25,6 +25,10 @@
   src: url(./assets/PlaylfairDisplay-Italic.ttf);
   font-style: italic;
 }
+@font-face {
+  font-family: 'Roboto';
+  src: url(./assets/Roboto.ttf);
+}
 
 * {
   outline: 0px solid red;

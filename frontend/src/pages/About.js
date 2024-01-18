@@ -47,41 +47,43 @@ export default function About() {
 			<p>Prices for one month may be higher if there are more complex dishes, fewer cohort diners, or exotic ingredients.</p>
 			<p>Here is a general guide that is based on a small, single-cook cohort test in Montréal, Québec (prices in $CAD):</p>
 			<table>
-				<tr>
-					<th>Cohort size</th>
-					<td>3 + 1 Cook</td>
-					<td>4 + 1 Cook</td>
-					<td>5 + 1 Cook</td>
-					<td>6 + 1 Cook</td>
-				</tr>
-				<tr>
-					<th>Price per diner</th>
-					<td>$39</td>
-					<td>$48</td>
-					<td>$55</td>
-					<td>$60</td>
-				</tr>
-				<tr>
-					<th>Service Fee</th>
-					<td>$4</td>
-					<td>$5</td>
-					<td>$6</td>
-					<td>$7</td>
-				</tr>
-				<tr>
-					<th>Cost per Diner</th>
-					<td>$13</td>
-					<td>$12</td>
-					<td>$11</td>
-					<td>$10</td>
-				</tr>
-				<tr>
-					<th>Cook's compensation</th>
-					<td>$35</td>
-					<td>$43</td>
-					<td>$49</td>
-					<td>$53</td>
-				</tr>
+				<tbody>
+					<tr>
+						<th>Cohort size</th>
+						<td>3 + 1 Cook</td>
+						<td>4 + 1 Cook</td>
+						<td>5 + 1 Cook</td>
+						<td>6 + 1 Cook</td>
+					</tr>
+					<tr>
+						<th>Price per diner</th>
+						<td>$39</td>
+						<td>$48</td>
+						<td>$55</td>
+						<td>$60</td>
+					</tr>
+					<tr>
+						<th>Service Fee</th>
+						<td>$4</td>
+						<td>$5</td>
+						<td>$6</td>
+						<td>$7</td>
+					</tr>
+					<tr>
+						<th>Cost per Diner</th>
+						<td>$13</td>
+						<td>$12</td>
+						<td>$11</td>
+						<td>$10</td>
+					</tr>
+					<tr>
+						<th>Cook's compensation</th>
+						<td>$35</td>
+						<td>$43</td>
+						<td>$49</td>
+						<td>$53</td>
+					</tr>
+				</tbody>
 			</table>
 			<p>Sounds good with you? Let's get started.</p>
 		<div className="sign-up-CTA-container">

@@ -1,6 +1,9 @@
 import { Outlet, Routes, Route } from 'react-router';
+import { Link } from 'react-router-dom';
 import { ConfigProvider } from "antd";
 import {  useEffect } from 'react';
+
+import CookieConsent from 'react-cookie-consent';
 
 import './App.css';
 import './blocks/blocks.css';
@@ -18,6 +21,7 @@ import Login from './pages/account/Login';
 import Profile from './pages/account/Profile';
 import Cohort from './pages/account/Profile/Cohort';
 import Payment from './pages/account/Profile/Payment';
+import Summary from './pages/account/Profile/Summary';
 import Privacy from './pages/privacy';
 
 import { onAuthStateChanged } from 'firebase/auth';
@@ -32,6 +36,23 @@ function Page() {
     <div>
       <Header />
       <Outlet />
+      <CookieConsent 
+      disableStyles={true} 
+        buttonText="accept"
+        declineButtonText="decline"
+        containerClasses="cookies-container"
+        contentClasses="cookies-content"
+        buttonClasses="button"
+        enableDeclineButton
+        declineButtonClasses='button'
+        buttonStyle={{marginBottom: "2.5rem"}}
+        flipButtons
+        >
+          <h2>These are the least tasty cookies on this site.</h2>
+          <span>But they <em>are</em> necessary to ensure your experience on OpenKitchen is optimal.
+          <br />You can learn more by reading our <Link to="/privacy" className="privacy-link">Privacy policy</Link>.
+          </span>
+          </CookieConsent>
       <Footer />
     </div>
   )
@@ -54,7 +75,7 @@ useEffect(() => {
       // User is signed out
       // ... 
       console.log("user is logged out");
-      navigate("/login");
+
     }
   })
 }, [navigate])
@@ -78,6 +99,7 @@ useEffect(() => {
               <Route path="contact"     element={<Contact />}/>
               <Route path="login"       element={<Login />}/> 
               <Route path="profile"     element={<Profile />}>
+                <Route path=""          element={<Summary />}/>
                 <Route path="cohort"    element={<Cohort />}/>
                 <Route path="payment"   element={<Payment />}/>
               </Route>
