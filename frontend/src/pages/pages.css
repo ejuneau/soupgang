@@ -19,7 +19,9 @@
     padding-top: 5rem;
 }
 .splash h1 {
-    font-size: 5em;
+    font-size: 4em;
+    margin-bottom: 0;
+
 }
 .image-text {
     text-align: center;
@@ -29,6 +31,7 @@
 }
 .splash p {
     max-width: 80%;
+
 }
 .splash img {
     position: absolute;
@@ -43,6 +46,9 @@
 
 .subtitle {
     font-size: 2em;
+}
+.subtitle.splash-text {
+    margin-bottom: 0;
 }
 .about-info {
     display: flex;
@@ -213,7 +219,7 @@ input[type=text], input[type=password], input[type=email] {
     align-items: center;
     padding: 0 clamp(3rem, 7.5vw, 7.5rem);
     margin: 0 calc(-1 * clamp(1rem, 2.5vw, 2.5rem));
-    clip-path: polygon(clamp(1rem, 2.5vw, 5rem) 0%, 100% 0%, calc(100%  -  clamp(1rem, 2.5vw, 5rem)) 100%, 0% 100%);
+    clip-path: polygon(clamp(2rem, 5vw, 5rem) 0%, 100% 0%, calc(100%  -  clamp(2rem, 5vw, 5rem)) 100%, 0% 100%);
 
 
 
@@ -232,14 +238,14 @@ input[type=text], input[type=password], input[type=email] {
 }
 .profile-navbar a.profile-navbar-first {
     justify-content: right;
-    clip-path: polygon(0% 0%, 100% 0%, calc(100%  -  clamp(1rem, 2.5vw, 5rem)) 100%, 0% 100%); 
+    clip-path: polygon(0% 0%, 100% 0%, calc(100%  -  clamp(2rem, 5vw, 5rem)) 100%, 0% 100%); 
     margin-left: 0 ;
     padding-left: 0 ;
     
 }
 .profile-navbar a.profile-navbar-last {
     justify-content: left;
-    clip-path: polygon(clamp(1rem, 2.5vw, 5rem) 0%, 100% 0%, 100% 100%, 0% 100%); 
+    clip-path: polygon(clamp(2rem, 5vw, 5rem) 0%, 100% 0%, 100% 100%, 0% 100%); 
     margin-right: 0 ;
     padding-right: 0 ;
 

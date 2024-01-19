@@ -22,6 +22,7 @@ import Profile from './pages/account/Profile';
 import Cohort from './pages/account/Profile/Cohort';
 import Payment from './pages/account/Profile/Payment';
 import Summary from './pages/account/Profile/Summary';
+import Update from './pages/account/Profile/Update';
 import Privacy from './pages/privacy';
 
 import { onAuthStateChanged } from 'firebase/auth';
@@ -102,6 +103,7 @@ useEffect(() => {
                 <Route path=""          element={<Summary />}/>
                 <Route path="cohort"    element={<Cohort />}/>
                 <Route path="payment"   element={<Payment />}/>
+                <Route path="update"    element={<Update />}/>
               </Route>
               <Route path="privacy"     element={<Privacy />} />
               <Route path="/*"          element={<NotFound />} />
