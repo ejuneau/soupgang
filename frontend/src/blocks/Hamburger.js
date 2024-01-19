@@ -104,6 +104,33 @@ export default function Hamburger(props) {
                     margin-right: 1rem;
                     margin-left:0.5rem;
                 }
+
+                .profile-navbar a {
+                    padding: 0 1rem;
+                    margin: 0 0rem;
+                    clip-path: unset; 
+                    border-radius: 5px 5px 0px 0px;
+                }
+                .profile-navbar a.profile-navbar-first, .profile-navbar a.profile-navbar-last {
+                    clip-path: unset;
+                    padding: 0 1rem;
+                }
+                .profile-navbar a.profile-navbar-first {
+                    border-radius: 0px 5px 0px 0px;
+                }
+                .profile-navbar a.profile-navbar-last {
+                    border-radius: 5px 0px 0px 0px;
+                }
+                .form-container {
+                    flex-direction: column;
+                }
+                button.login-with-google {
+                    width: 100%;
+                    margin-top: 0;
+                }
+                .form-container > span {
+                    margin-top: 0 !important;
+                }
             }
         `}
         </style>

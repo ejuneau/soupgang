@@ -102,7 +102,7 @@ const SignIn = (props) => {
             </button>
           </div>
 
-          <div classname="sso apple">
+          <div className="sso apple">
 
           </div>
         </div>

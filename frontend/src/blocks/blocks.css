@@ -162,6 +162,9 @@ header a, footer a {
 .login-with-google p {
     font-family: 'Roboto';
 }
+.login-with-google:hover {
+    background-color: #f5f5f5;
+}
 
 .ant-form * {
     font-size: 1rem !important;
