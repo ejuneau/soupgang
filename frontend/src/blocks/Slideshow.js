@@ -1,19 +1,52 @@
-import BeefBaconStew        from '../assets/food/beef and bacon stew.png';
-import BeefBoneCurry        from '../assets/food/beef bone curry.png';
-import BeefWellington       from '../assets/food/beef wellington.png';
-import Borscht              from '../assets/food/borscht.png';
-import ChickenNoodleSoup    from '../assets/food/chicken noodle soup.png';
-import ChickenPadThai       from '../assets/food/chicken pad thai.png';
-import ChickenPotPie        from '../assets/food/chicken pot pie.png';
-import ChiliConCarne        from '../assets/food/chili.png';
-import FrenchFries          from '../assets/food/french fries.png';
+import ProgressiveImage from 'react-progressive-graceful-image';
+
+import BeefBaconStew        from '../assets/food/fullres/beef and bacon stew.png';
+import BeefBaconStewPH      from '../assets/food/lowres/beef and bacon stew.png';
+
+import BeefBoneCurry        from '../assets/food/fullres/beef bone curry.png';
+import BeefBoneCurryPH      from '../assets/food/lowres/beef bone curry.png';
+
+import BeefWellington       from '../assets/food/fullres/beef wellington.png';
+import BeefWellingtonPH     from '../assets/food/lowres/beef wellington.png';
+
+import Borscht              from '../assets/food/fullres/borscht.png';
+import BorschtPH            from '../assets/food/lowres/borscht.png';
+
+import ChickenNoodleSoup    from '../assets/food/fullres/chicken noodle soup.png';
+import ChickenNoodleSoupPH  from '../assets/food/lowres/chicken noodle soup.png';
+
+import ChickenPadThai       from '../assets/food/fullres/chicken pad thai.png';
+import ChickenPadThaiPH     from '../assets/food/lowres/chicken pad thai.png';
+
+import ChickenPotPie        from '../assets/food/fullres/chicken pot pie.png';
+import ChickenPotPiePH      from '../assets/food/lowres/chicken pot pie.png';
+
+import ChiliConCarne        from '../assets/food/fullres/chili.png';
+import ChiliConCarnePH      from '../assets/food/lowres/chili.png';
+
+import FrenchFries          from '../assets/food/fullres/french fries.png';
+import FrenchFriesPH        from '../assets/food/lowres/french fries.png';
+
 import LambShepherdsPie     from "../assets/food/lamb shepherd's pie.png";
-import PolishDonuts         from '../assets/food/polish donuts.png';
-import RiceAndChickenStew   from '../assets/food/rice and chicken stew.png';
-import RoastDuck            from '../assets/food/roast duck.png';
-import ShrimpFriedRice      from '../assets/food/shrimp fried rice.png';
-import ShrimpSalad          from '../assets/food/shrimp salad.png';
-import VeganCaesarSalad     from '../assets/food/vegan ceasar salad.png';
+import LambShepherdsPiePH   from "../assets/food/lowres/lamb shepherd's pie.png";
+
+import PolishDonuts         from '../assets/food/fullres/polish donuts.png';
+import PolishDonutsPH       from '../assets/food/lowres/polish donuts.png';
+
+import RiceAndChickenStew   from '../assets/food/fullres/rice and chicken stew.png';
+import RiceAndChickenStewPH from '../assets/food/lowres/rice and chicken stew.png';
+
+import RoastDuck            from '../assets/food/fullres/roast duck.png';
+import RoastDuckPH          from '../assets/food/lowres/roast duck.png';
+
+import ShrimpFriedRice      from '../assets/food/fullres/shrimp fried rice.png';
+import ShrimpFriedRicePH    from '../assets/food/lowres/shrimp fried rice.png';
+
+import ShrimpSalad          from '../assets/food/fullres/shrimp salad.png';
+import ShrimpSaladPH        from '../assets/food/lowres/shrimp salad.png';
+
+import VeganCaesarSalad     from '../assets/food/fullres/vegan ceasar salad.png';
+import VeganCaesarSaladPH   from '../assets/food/lowres/vegan ceasar salad.png';
 
 import { Link } from 'react-router-dom';
 
@@ -22,85 +55,102 @@ export default function Slideshow(props) {
         {
             name:   "Beef and Bacon Stew",
             img:    BeefBaconStew,
-            cook:   "Alex (Montréal, QC)"
+            ph:     BeefBaconStewPH,
+            cook:   "Alex (Montréal, QC)",
         },
         {
             name:   "Rice and Chicken Stew",
             img:    RiceAndChickenStew,
-            cook:   "Tristan (Portland, OR)"
+            ph:     RiceAndChickenStewPH,
+            cook:   "Tristan (Portland, OR)",
         },
         {
             name:   "Borscht",
             img:    Borscht,
-            cook:   "Remy (Paris, FR)"
+            ph:     BorschtPH,
+            cook:   "Remy (Paris, FR)",
         },
         {
             name:   "Chili con Carne",
             img:    ChiliConCarne,
-            cook:   "Monica (Manhattan, NY)"
+            ph:     ChiliConCarnePH,
+            cook:   "Monica (Manhattan, NY)",
         },
         {
             name:   "Chicken Noodle Soup",
             img:    ChickenNoodleSoup,
-            cook:   "Makoto (Tokyo, JP)"
+            ph:     ChickenNoodleSoupPH,
+            cook:   "Makoto (Tokyo, JP)",
         },
         {
             name:   "Lamb Shepherd's Pie",
             img:    LambShepherdsPie,
-            cook:   "Bob (Seymour's Bay, NJ)"
+            ph:     LambShepherdsPiePH,
+            cook:   "Bob (Seymour's Bay, NJ)",
         },
         {
             name:   "Chicken Pad Thai",
             img:    ChickenPadThai,
-            cook:   "Chell (Bolarus IX)"
+            ph:     ChickenPadThaiPH,
+            cook:   "Chell (Bolarus IX)",
         },
         {
             name:   "Beef Wellington",
             img:    BeefWellington,
-            cook:   "Eve (Montréal, QC)"
+            ph:     BeefWellingtonPH,
+            cook:   "Eve (Montréal, QC)",
         },
         {
             name:   "Shrimp Fried Rice",
             img:    ShrimpFriedRice,
-            cook:   "Ethel (Riverdale, NY)"
+            ph:     ShrimpFriedRicePH,
+            cook:   "Ethel (Riverdale, NY)",
         },
         {
             name:   "Chicken Pot Pie",
             img:    ChickenPotPie,
-            cook:   "Shan (Wellington, NZ)"
+            ph:     ChickenPotPiePH,
+            cook:   "Shan (Wellington, NZ)",
         },
         {
             name:   "Shrimp Salad",
             img:    ShrimpSalad,
-            cook:   "Marshall (San Francisco, CA)"
+            ph:     ShrimpSaladPH,
+            cook:   "Marshall (San Francisco, CA)",
         },
         {
             name:   "French Fries",
             img:    FrenchFries,
-            cook:   "'Chef' (Stockholm, SE)"
+            ph:     FrenchFriesPH,
+            cook:   "'Chef' (Stockholm, SE)",
         },
         {
             name:   "Roast Duck",
             img:    RoastDuck,
-            cook:   "Jack (Santa Monica, CA)"
+            ph:     RoastDuckPH,
+            cook:   "Jack (Santa Monica, CA)",
         },
         {
             name:   "Polish Donuts",
             img:    PolishDonuts,
-            cook:   "Arthur (North Caldwell, NJ)"
+            ph:     PolishDonutsPH,
+            cook:   "Arthur (North Caldwell, NJ)",
         },
         {
             name:   "Vegan Caesar Salad",
             img:    VeganCaesarSalad,
-            cook:   "Sydnee (Montréal, QC)"
+            ph:     VeganCaesarSaladPH,
+            cook:   "Sydnee (Montréal, QC)",
         },
         {
             name:   "Beef Bone Curry",
             img:    BeefBoneCurry,
-            cook:   "Carmen (Chicago, IL)"
+            ph:     BeefBoneCurryPH,
+            cook:   "Carmen (Chicago, IL)",
         },
 
     ]
+
     const imagesList = props.truncated?images.slice(0,6):images;
     return (
         <div className="slideshow-container">
@@ -110,7 +160,15 @@ export default function Slideshow(props) {
                     imagesList.map(image => {
                         return (
                             <div className="slideshow-slide" key={image.name}>
-                                <img className="slideshow-image" src={image.img} alt={image.name} />
+                                <ProgressiveImage src={image.img} placeholder={image.ph}>
+                                    {(src, loading) => (
+                                        <img
+                                        className={`slideshow-image${loading ? " loading" : " loaded"}`}
+                                        src={src}
+                                        alt={image.name}
+                                        />
+                                    )}
+                                    </ProgressiveImage>
                                 <h3 className="slideshow-text image-text">{image.name}<br/>By: {image.cook}</h3>
                             </div>
                         )

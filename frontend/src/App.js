@@ -88,7 +88,8 @@ useEffect(() => {
             colorPrimary: '#364761',
             colorLink: '#CCA43B',
             colorBgBase: '#E5E5E5',
-            colorError: '#CF5C36'
+            colorError: '#CF5C36',
+            fontSize: '1em'
           }
         }}>
           <Routes>
