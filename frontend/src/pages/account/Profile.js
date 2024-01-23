@@ -45,7 +45,7 @@ function Profile() {
         const docSnap = await getDoc(docRef);
         if(docSnap.exists()) {
           setProfileData(docSnap.data());
-          console.log("Retrieved profile data");
+          // console.log("Retrieved profile data");
           setIsLoading(false);
         } else {
           console.log(`User with uid ${currentUser.uid} does not exist`)

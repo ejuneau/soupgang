@@ -11,7 +11,7 @@ const SignIn = (props) => {
 
     const logGoogleUser = async () => {
       const response = await signInWithGooglePopup();
-      console.log(response);
+      // console.log(response);
     }
 
     const onFinish = values => {
