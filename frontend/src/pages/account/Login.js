@@ -15,7 +15,7 @@ export default function Login() {
       }, [inUp]);
     useEffect(() => {
         if(currentUser) {
-            navigate('/profile')
+            navigate('/profile/')
           }
     }, [navigate, currentUser])
               

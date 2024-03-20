@@ -23,7 +23,7 @@ const SignIn = (props) => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/profile");
+          navigate("/profile/");
           console.log(user);
         })
         .catch((error) => {

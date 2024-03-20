@@ -150,8 +150,18 @@ export default function Slideshow(props) {
         },
 
     ]
+    
+    var randomizedImages = [];
 
-    const imagesList = props.truncated?images.slice(0,6):images;
+    while (randomizedImages.length < images.length) {
+        var r = Math.floor(Math.random() * images.length);
+        if (randomizedImages.indexOf(images[r]) === -1) {
+            randomizedImages.push(images[r])
+        }
+    }
+
+    const imagesList = props.truncated?randomizedImages.slice(0,6):randomizedImages;
+
     return (
         <div className="slideshow-container">
             {props.truncated && <h1>What's cooking?</h1>}
@@ -160,7 +170,7 @@ export default function Slideshow(props) {
                     imagesList.map(image => {
                         return (
                             <div className="slideshow-slide" key={image.name}>
-                                <ProgressiveImage src={image.img} placeholder={image.ph}>
+                                {/* <ProgressiveImage src={image.img} placeholder={image.ph}>
                                     {(src, loading) => (
                                         <img
                                         className={`slideshow-image${loading ? " loading" : " loaded"}`}
@@ -168,6 +178,10 @@ export default function Slideshow(props) {
                                         alt={image.name}
                                         />
                                     )}
+                                    </ProgressiveImage> */}
+
+                                    <ProgressiveImage src={image.img} placeholder={image.ph} >
+                                        {(src, loading) => <img src={src} className={`slideshow-image ${loading?"loading":"loaded"}`} draggable="false" alt={image.name} />}
                                     </ProgressiveImage>
                                 <h3 className="slideshow-text image-text">{image.name}<br/>By: {image.cook}</h3>
                             </div>
